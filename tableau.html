@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toutes les analyses · Rabbit_Trader</title>
+<meta name="description" content="Toutes les analyses d'actions de Rabbit_Trader sur les small et mid caps françaises, avec note de conviction et verdict, triables par date, note ou secteur.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0d12;--surface:#121620;--sur2:#171c28;--border:#262d3b;--head:#eef1f6;--text:#ccd3de;--muted:#a3adbb;--gold:#d6bd84;--gold2:#ecd9a8;--green:#8fd0a0;--red:#e8a197}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text)}
+body{font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.6}
+.wrap{max-width:980px;margin:0 auto;padding:28px 16px 48px}
+a{color:var(--gold2)}
+.hero{background:linear-gradient(160deg,#1a1710,#0b0d12);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
+.htop{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.hlogo{width:46px;height:46px;flex:none}
+.pill{font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold2);border:1px solid #6b5a33;border-radius:999px;padding:3px 12px}
+h1{font-size:34px;line-height:1.15;color:var(--head);margin:6px 0 8px;font-weight:800}
+h1 span{color:var(--gold)}
+.lead{margin:0;max-width:70ch}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px 14px}
+.stat b{font-family:"JetBrains Mono",monospace;font-size:20px;color:var(--head);display:block}
+.stat small{color:var(--muted);font-size:13px}
+.abo{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:12px;padding:12px 16px;margin:0 0 20px}
+.abo p{margin:0;color:var(--head)}.abo small{display:block;font-size:13px;color:var(--muted)}
+.btn{background:var(--gold);color:#14110a;font-weight:700;text-decoration:none;border-radius:99px;padding:8px 18px;white-space:nowrap}
+.ctrl{background:rgba(11,13,18,.96);backdrop-filter:blur(6px);padding:12px 0 10px;border-bottom:1px solid var(--border);margin-bottom:16px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:4px 0}
+.row .lbl{font-size:13px;color:var(--muted);min-width:52px}
+.chip{font:600 14px Inter,sans-serif;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip:hover{border-color:var(--gold)}
+.chip.on{background:var(--gold);color:#14110a;border-color:var(--gold)}
+.search{flex:1;min-width:180px;font:15px Inter,sans-serif;color:var(--head);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:7px 14px}
+.search::placeholder{color:var(--muted)}
+h2{font-size:22px;color:var(--head);border-left:4px solid var(--gold);padding-left:12px;margin:26px 0 12px}
+.card{display:grid;grid-template-columns:1fr auto;gap:6px 16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:10px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--gold);transform:translateY(-1px)}
+.name{font-size:22px;font-weight:800;color:var(--head);line-height:1.2}
+.name small{font:500 13px "JetBrains Mono",monospace;color:var(--muted);margin-left:8px;letter-spacing:.03em}
+.meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
+.date{font:700 17px "JetBrains Mono",monospace;color:var(--gold2)}
+.sect{border:1px solid var(--border);border-radius:999px;padding:1px 10px;font-size:13px}
+.title{grid-column:1/-1;color:var(--text);font-size:15.5px}
+.extra{grid-column:1/-1;font-size:14px;color:var(--muted)}
+.right{grid-row:1/span 2;grid-column:2;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.note{font:700 26px "JetBrains Mono",monospace;color:var(--head);line-height:1}
+.note small{font-size:14px;color:var(--muted)}
+.bar{width:92px;height:6px;border-radius:3px;background:#262d3b;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--gold)}
+.lap{font-size:13px;font-weight:700;border-radius:999px;padding:2px 10px;border:1px solid}
+.lap.h{color:var(--green);border-color:#3d6b4a}.lap.n{color:var(--gold2);border-color:#6b5a33}.lap.b{color:var(--red);border-color:#7a4038}.lap.x{color:var(--muted);border-color:var(--border)}
+.empty{color:var(--muted);text-align:center;padding:30px}
+.legend{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;font-size:14.5px;margin-top:24px}
+footer{margin-top:28px;border-top:1px solid var(--border);padding-top:14px;font-size:13.5px;color:var(--muted)}
+@media(min-width:700px){.ctrl{position:sticky;top:0;z-index:5}}
+@media(max-width:600px){h1{font-size:27px}.name{font-size:19px}.note{font-size:22px}.card{padding:14px}}
+</style></head><body><div class="wrap">
+
+<div class="hero">
+<div class="htop"><svg class="hlogo" viewBox="0 0 200 200" role="img" aria-label="Rabbit_Trader"><g transform="translate(80 90) rotate(-12) scale(1 1.3)"><path d="M -6 0 C -18 -20, -16 -54, 0 -64 C 16 -54, 18 -20, 6 0 Z" fill="#d6bd84"/><path d="M -3 -12 C -10 -26, -9 -48, 0 -56 C 9 -48, 10 -26, 3 -12 Z" fill="#6b5a33"/></g><g transform="translate(120 90) rotate(12) scale(1 1.3)"><path d="M -6 0 C -18 -20, -16 -54, 0 -64 C 16 -54, 18 -20, 6 0 Z" fill="#d6bd84"/><path d="M -3 -12 C -10 -26, -9 -48, 0 -56 C 9 -48, 10 -26, 3 -12 Z" fill="#6b5a33"/></g><circle cx="100" cy="134" r="56" fill="#171c28" stroke="#d6bd84" stroke-width="7"/><text x="100" y="149" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="700" font-size="42" fill="#eef1f6">R_T</text></svg><span class="pill">Rabbit_Trader · small et mid caps françaises</span></div>
+<h1>Toutes les analyses <span>· notes et verdicts</span></h1>
+<p class="lead">Chiffres vérifiés à la source, trois scénarios chiffrés, une note de conviction sur 10 et le lapin d'humeur. Triez par date, par note ou par secteur, et cliquez sur une valeur pour lire l'analyse.</p>
+<div class="stats" id="stats"></div>
+</div>
+
+<div class="abo"><p>Recevoir la prochaine analyse par mail<small>Gratuit, désabonnement en un clic.</small></p><a class="btn" href="https://rabbittrader.substack.com/subscribe?utm_source=tableau">S’abonner</a></div>
+
+<div class="ctrl">
+<div class="row"><span class="lbl">Trier</span>
+<button class="chip on" data-sort="date">Plus récentes</button>
+<button class="chip" data-sort="note">Meilleures notes</button>
+<button class="chip" data-sort="secteur">Par secteur</button>
+<button class="chip" data-sort="nom">A → Z</button></div>
+<div class="row"><span class="lbl">Lapin</span>
+<button class="chip on" data-lap="all">Tous</button>
+<button class="chip" data-lap="h">Haussier</button>
+<button class="chip" data-lap="n">Neutre</button>
+<button class="chip" data-lap="b">Baissier</button>
+<input class="search" id="q" type="search" placeholder="Chercher une valeur…" aria-label="Chercher une valeur"></div>
+</div>
+
+<div id="list"></div>
+
+<div class="legend"><b style="color:var(--head)">Comment lire</b><br>
+La <b>note</b> mesure la solidité du dossier, sur cinq critères. Le <b>lapin</b> donne le verdict sur le prix : haussier quand ma valeur pondérée dépasse nettement le cours, neutre quand le cours en est proche, baissier quand il paie plus que ce que j'en attends. Une note se lit à sa date : le cours et les nouvelles ont pu changer depuis. Les analyses d'avant le 19/10/2026 n'ont pas de lapin, il n'existait pas encore.</div>
+
+<footer>
+<p>Ne constitue pas un conseil en investissement. Investir comporte un risque de perte en capital. Chaque analyse indique si l'auteur détient ou non la valeur à sa date.</p>
+<p>Rabbit_Trader · <a href="https://rabbittrader.substack.com">rabbittrader.substack.com</a> · mise à jour le <span id="maj"></span></p>
+</footer>
+</div>
+
+<script>
+const MAJ='20/11/2026';
+const P='https://rabbittrader.substack.com/p/';
+const S={bio:'Biotech et santé',tech:'Tech, semi-conducteurs et télécoms',ind:'Industrie et énergie'};
+// date (AAAA-MM-JJ), nom, ticker, secteur, note, lapin (h/n/b/x), titre, slug, liens supplémentaires
+const A=[
+['2026-11-19','Crossject','ALCJ','bio',3.6,'n','Tout est prêt, sauf le dépôt','crossject-tout-est-pret-sauf-le-depot'],
+['2026-11-16','Ekinops','EKI','tech',5.6,'n','La croissance revient, la marge attend le plan Bridge','ekinops-la-croissance-revient-la'],
+['2026-11-13','Adocia','ADOC','bio',4.7,'n','+129 % en un mois avant les données','adocia-129-en-un-mois-avant-les-donnees'],
+['2026-11-13','Memscap','MEMS','tech',6.3,'n','La marge suit enfin la croissance','memscap-la-marge-suit-enfin-la-croissance'],
+['2026-11-11','Riber','ALRIB','tech',5.0,'n',"Le leader de l'épitaxie attend sa licence",'riber-le-leader-de-lepitaxie-attend'],
+['2026-11-10','RocTool','ALROC','ind',5.8,'b','Deux commandes de défense, un bilan à reconstruire','roctool-deux-commandes-de-defense'],
+['2026-11-09','THX Pharma','ALTHX','bio',6.3,'h','La phase 3 est financée, le premier patient attendu d\'ici fin 2026','thx-pharma-la-phase-3-est-financee'],
+['2026-11-07','Genfit','GNFT','bio',6.3,'h','Les redevances triplent, la trésorerie baisse','genfit-les-redevances-triplent-la'],
+['2026-11-05','Soitec','SOI','tech',5.7,'h','La photonique décolle, le cours redescend','soitec-la-photonique-decolle-le-cours'],
+['2026-11-04','Viridien','VIRI','ind',5.9,'n','La dette fond, la géoscience repart','viridien-la-dette-fond-la-geoscience'],
+['2026-11-03','bioMérieux','BIM','bio',6.4,'n','Le T3 repart, la fourchette annuelle reste large','biomerieux-le-t3-repart-la-fourchette'],
+['2026-11-02','Alstom','ALO','ind',4.1,'n',"Le Coradia Max fait dérailler l'exercice",'alstom-le-coradia-max-fait-derailler'],
+['2026-11-02','2CRSi','AL2SI','tech',3.5,'b','Des ventes encaissées, des comptes sans certification','2crsi-des-ventes-encaissees-des-comptes',[['Cinq questions pour la conférence','2crsi-cinq-questions-pour-la-conference'],['Ce que le PDG a dit le 3 novembre','2crsi-ce-que-le-pdg-a-dit-a-la-conference']]],
+['2026-10-29','Median Technologies','ALMDT','bio',6.0,'n',"L'iCRO accélère, eyonis attend son premier client",'median-technologies-licro-accelere'],
+['2026-10-29','DBV Technologies','DBV','bio',5.9,'n','Le dossier est à la FDA, le financement reste à écrire','dbv-technologies-le-dossier-est-a'],
+['2026-10-26','Lumibird','LBIRD','tech',6.8,'h','Un T4 record promis, un chèque en attente','lumibird-un-t4-record-promis-un-cheque'],
+['2026-10-21','Atos','ATO','tech',4.4,'n','Le redressement se paie à crédit','atos-le-redressement-se-paie-a-credit'],
+['2026-10-20','Sensorion','ALSEN','bio',4.6,'n','Une biotech payée au prix de sa trésorerie','sensorion-une-biotech-payee-au-prix'],
+['2026-10-18','Eutelsat','ETL','tech',4.7,'x',"L'alternative européenne, au prix de la géopolitique",'eutelsat-lalternative-europeenne'],
+['2026-10-17','Haffner Energy','ALHAF','ind',4.9,'x','Financée, commandée, pas encore qualifiée','haffner-energy-financee-commandee'],
+['2026-10-16','Vusion','VU','tech',6.1,'x','À quatre jours du T3, le gap des semestriels est refermé','vusion-a-quatre-jours-du-t3-le-gap'],
+['2026-10-16','Median Technologies','ALMDT','bio',6.0,'x','Tout est autorisé, rien n\'est encore facturé','median-technologies-tout-est-autorise']
+].map(r=>({d:r[0],nom:r[1],tk:r[2],s:r[3],note:r[4],lap:r[5],t:r[6],u:P+r[7],ex:r[8]||[]}));
+const LAP={h:'Haussier',n:'Neutre',b:'Baissier',x:'Avant le lapin'};
+let sort='date',lap='all',q='';
+const fr=d=>d.split('-').reverse().join('/');
+const nf=n=>n.toFixed(1).replace('.',',');
+function card(a){
+ const ex=a.ex.length?`<div class="extra">Aussi : ${a.ex.map(e=>`<a href="${P+e[1]}" onclick="event.stopPropagation()">${e[0]}</a>`).join(' · ')}</div>`:'';
+ return `<a class="card" href="${a.u}"><div><div class="name">${a.nom}<small>${a.tk}</small></div>
+ <div class="meta"><span class="date">${fr(a.d)}</span><span class="sect">${S[a.s]}</span></div></div>
+ <div class="right"><div class="note">${nf(a.note)}<small>/10</small></div><div class="bar"><i style="width:${a.note*10}%"></i></div><span class="lap ${a.lap}">${LAP[a.lap]}</span></div>
+ <div class="title">${a.t}</div>${ex}</a>`}
+function render(){
+ let r=A.filter(a=>(lap==='all'||a.lap===lap)&&(!q||(a.nom+' '+a.tk).toLowerCase().includes(q)));
+ const byDate=(x,y)=>y.d.localeCompare(x.d);
+ if(sort==='date')r.sort(byDate);
+ if(sort==='note')r.sort((x,y)=>y.note-x.note||byDate(x,y));
+ if(sort==='nom')r.sort((x,y)=>x.nom.localeCompare(y.nom,'fr')||byDate(x,y));
+ let h='';
+ if(!r.length)h='<p class="empty">Aucune analyse ne correspond.</p>';
+ else if(sort==='secteur'){for(const k of Object.keys(S)){const g=r.filter(a=>a.s===k).sort(byDate);if(g.length)h+=`<h2>${S[k]}</h2>`+g.map(card).join('')}}
+ else h=r.map(card).join('');
+ document.getElementById('list').innerHTML=h}
+document.querySelectorAll('[data-sort]').forEach(b=>b.onclick=()=>{sort=b.dataset.sort;document.querySelectorAll('[data-sort]').forEach(x=>x.classList.toggle('on',x===b));render()});
+document.querySelectorAll('[data-lap]').forEach(b=>b.onclick=()=>{lap=b.dataset.lap;document.querySelectorAll('[data-lap]').forEach(x=>x.classList.toggle('on',x===b));render()});
+document.getElementById('q').oninput=e=>{q=e.target.value.trim().toLowerCase();render()};
+const vals=new Set(A.map(a=>a.tk)).size;
+document.getElementById('stats').innerHTML=`<div class="stat"><b>${A.length}</b><small>analyses</small></div><div class="stat"><b>${vals}</b><small>valeurs suivies</small></div><div class="stat"><b>${fr(A[0].d)}</b><small>dernière analyse</small></div>`;
+document.getElementById('maj').textContent=MAJ;
+render();
+</script>
+</body></html>
