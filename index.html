@@ -2,6 +2,11 @@
 <html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Toutes les analyses · Rabbit_Trader</title>
 <meta name="description" content="Toutes les analyses d'actions de Rabbit_Trader sur les small et mid caps françaises, avec note de conviction et verdict, triables par date, note ou secteur.">
+<link rel="canonical" href="https://rabbittrader.fr/">
+<meta property="og:type" content="website"><meta property="og:title" content="Toutes les analyses Rabbit_Trader : small et mid caps françaises">
+<meta property="og:description" content="Analyses d'actions small et mid caps françaises avec note de conviction et verdict, triables par date, note ou secteur.">
+<meta property="og:url" content="https://rabbittrader.fr/"><meta property="og:image" content="https://substack-post-media.s3.amazonaws.com/public/images/d19be8eb-14be-4855-b08a-8d62e0c255f5_1456x816.png">
+<meta name="twitter:card" content="summary_large_image">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#0b0d12;--surface:#121620;--sur2:#171c28;--border:#262d3b;--head:#eef1f6;--text:#ccd3de;--muted:#a3adbb;--gold:#d6bd84;--gold2:#ecd9a8;--green:#8fd0a0;--red:#e8a197}
@@ -33,7 +38,7 @@ h1 span{color:var(--gold)}
 .search::placeholder{color:var(--muted)}
 h2{font-size:22px;color:var(--head);border-left:4px solid var(--gold);padding-left:12px;margin:26px 0 12px}
 .card{display:grid;grid-template-columns:1fr auto;gap:6px 16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:10px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
-.card:hover{border-color:var(--gold);transform:translateY(-1px)}
+.card{cursor:pointer}.links{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}.lk,.lk2{font-size:14px;font-weight:600;text-decoration:none;border-radius:99px;padding:4px 12px}.lk{color:var(--gold2);border:1px solid #6b5a33}.lk2{color:#14110a;background:var(--gold)}.card:hover{border-color:var(--gold);transform:translateY(-1px)}
 .name{font-size:22px;font-weight:800;color:var(--head);line-height:1.2}
 .name small{font:500 13px "JetBrains Mono",monospace;color:var(--muted);margin-left:8px;letter-spacing:.03em}
 .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;font-size:14px;color:var(--muted)}
@@ -90,7 +95,9 @@ La <b>note</b> mesure la solidité du dossier, sur cinq critères. Le <b>lapin</
 </div>
 
 <script>
-const MAJ='20/11/2026';
+const MAJ='21/11/2026';
+const F={"crossject-tout-est-pret-sauf-le-depot": "crossject-alcj-19-11-2026", "ekinops-la-croissance-revient-la": "ekinops-eki-16-11-2026", "adocia-129-en-un-mois-avant-les-donnees": "adocia-adoc-13-11-2026", "memscap-la-marge-suit-enfin-la-croissance": "memscap-mems-13-11-2026", "riber-le-leader-de-lepitaxie-attend": "riber-alrib-11-11-2026", "roctool-deux-commandes-de-defense": "roctool-alroc-10-11-2026", "thx-pharma-la-phase-3-est-financee": "thx-pharma-althx-09-11-2026", "genfit-les-redevances-triplent-la": "genfit-gnft-07-11-2026", "soitec-la-photonique-decolle-le-cours": "soitec-soi-05-11-2026", "viridien-la-dette-fond-la-geoscience": "viridien-viri-04-11-2026", "biomerieux-le-t3-repart-la-fourchette": "biomerieux-bim-03-11-2026", "alstom-le-coradia-max-fait-derailler": "alstom-alo-02-11-2026", "2crsi-des-ventes-encaissees-des-comptes": "2crsi-al2si-02-11-2026", "median-technologies-licro-accelere": "median-technologies-almdt-29-10-2026", "dbv-technologies-le-dossier-est-a": "dbv-technologies-dbv-29-10-2026", "lumibird-un-t4-record-promis-un-cheque": "lumibird-lbird-26-10-2026", "atos-le-redressement-se-paie-a-credit": "atos-ato-21-10-2026", "sensorion-une-biotech-payee-au-prix": "sensorion-alsen-20-10-2026", "eutelsat-lalternative-europeenne": "eutelsat-etl-18-10-2026", "haffner-energy-financee-commandee": "haffner-energy-alhaf-17-10-2026", "vusion-a-quatre-jours-du-t3-le-gap": "vusion-vu-16-10-2026", "median-technologies-tout-est-autorise": "median-technologies-almdt-16-10-2026"};
+
 const P='https://rabbittrader.substack.com/p/';
 const S={bio:'Biotech et santé',tech:'Tech, semi-conducteurs et télécoms',ind:'Industrie et énergie'};
 // date (AAAA-MM-JJ), nom, ticker, secteur, note, lapin (h/n/b/x), titre, slug, liens supplémentaires
@@ -117,17 +124,18 @@ const A=[
 ['2026-10-17','Haffner Energy','ALHAF','ind',4.9,'x','Financée, commandée, pas encore qualifiée','haffner-energy-financee-commandee'],
 ['2026-10-16','Vusion','VU','tech',6.1,'x','À quatre jours du T3, le gap des semestriels est refermé','vusion-a-quatre-jours-du-t3-le-gap'],
 ['2026-10-16','Median Technologies','ALMDT','bio',6.0,'x','Tout est autorisé, rien n\'est encore facturé','median-technologies-tout-est-autorise']
-].map(r=>({d:r[0],nom:r[1],tk:r[2],s:r[3],note:r[4],lap:r[5],t:r[6],u:P+r[7],ex:r[8]||[]}));
+].map(r=>({d:r[0],nom:r[1],tk:r[2],s:r[3],note:r[4],lap:r[5],t:r[6],u:P+r[7],f:F[r[7]]?'/'+F[r[7]]:'',ex:r[8]||[]}));
 const LAP={h:'Haussier',n:'Neutre',b:'Baissier',x:'Avant le lapin'};
 let sort='date',lap='all',q='';
 const fr=d=>d.split('-').reverse().join('/');
 const nf=n=>n.toFixed(1).replace('.',',');
 function card(a){
- const ex=a.ex.length?`<div class="extra">Aussi : ${a.ex.map(e=>`<a href="${P+e[1]}" onclick="event.stopPropagation()">${e[0]}</a>`).join(' · ')}</div>`:'';
- return `<a class="card" href="${a.u}"><div><div class="name">${a.nom}<small>${a.tk}</small></div>
+ const ex=a.ex.length?`<div class="extra">Aussi : ${a.ex.map(e=>`<a href="${P+e[1]}">${e[0]}</a>`).join(' · ')}</div>`:'';
+ const links=`<div class="links"><a class="lk" href="${a.u}">Lire sur Substack</a>${a.f?`<a class="lk2" href="${a.f}">Analyse complète</a>`:''}</div>`;
+ return `<div class="card" onclick="if(!event.target.closest('a'))location.href='${a.u}'"><div><div class="name">${a.nom}<small>${a.tk}</small></div>
  <div class="meta"><span class="date">${fr(a.d)}</span><span class="sect">${S[a.s]}</span></div></div>
  <div class="right"><div class="note">${nf(a.note)}<small>/10</small></div><div class="bar"><i style="width:${a.note*10}%"></i></div><span class="lap ${a.lap}">${LAP[a.lap]}</span></div>
- <div class="title">${a.t}</div>${ex}</a>`}
+ <div class="title">${a.t}</div>${ex}${links}</div>`}
 function render(){
  let r=A.filter(a=>(lap==='all'||a.lap===lap)&&(!q||(a.nom+' '+a.tk).toLowerCase().includes(q)));
  const byDate=(x,y)=>y.d.localeCompare(x.d);
