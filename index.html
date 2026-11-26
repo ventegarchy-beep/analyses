@@ -37,7 +37,7 @@ h1 span{color:var(--gold)}
 .search{flex:1;min-width:180px;font:15px Inter,sans-serif;color:var(--head);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:7px 14px}
 .search::placeholder{color:var(--muted)}
 h2{font-size:22px;color:var(--head);border-left:4px solid var(--gold);padding-left:12px;margin:26px 0 12px}
-.card{display:grid;grid-template-columns:1fr auto;gap:6px 16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:10px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.card{display:grid;grid-template-columns:1fr auto auto;gap:6px 16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:10px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
 .card{cursor:pointer}.links{grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}.lk,.lk2{font-size:14px;font-weight:600;text-decoration:none;border-radius:99px;padding:4px 12px}.lk{color:var(--gold2);border:1px solid #6b5a33}.lk2{color:#14110a;background:var(--gold)}.card:hover{border-color:var(--gold);transform:translateY(-1px)}
 .name{font-size:22px;font-weight:800;color:var(--head);line-height:1.2}
 .name small{font:500 13px "JetBrains Mono",monospace;color:var(--muted);margin-left:8px;letter-spacing:.03em}
@@ -46,7 +46,8 @@ h2{font-size:22px;color:var(--head);border-left:4px solid var(--gold);padding-le
 .sect{border:1px solid var(--border);border-radius:999px;padding:1px 10px;font-size:13px}
 .title{grid-column:1/-1;color:var(--text);font-size:15.5px}
 .extra{grid-column:1/-1;font-size:14px;color:var(--muted)}
-.right{grid-row:1/span 2;grid-column:2;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.rab{grid-row:1/span 2;grid-column:2;align-self:center;width:84px;height:84px;border-radius:50%;object-fit:cover;border:2px solid var(--border)}.rab.h{border-color:#3d6b4a}.rab.n{border-color:#6b5a33}.rab.b{border-color:#7a4038}
+.right{grid-row:1/span 2;grid-column:3;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
 .note{font:700 26px "JetBrains Mono",monospace;color:var(--head);line-height:1}
 .note small{font-size:14px;color:var(--muted)}
 .bar{width:92px;height:6px;border-radius:3px;background:#262d3b;overflow:hidden}
@@ -57,7 +58,7 @@ h2{font-size:22px;color:var(--head);border-left:4px solid var(--gold);padding-le
 .legend{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;font-size:14.5px;margin-top:24px}
 footer{margin-top:28px;border-top:1px solid var(--border);padding-top:14px;font-size:13.5px;color:var(--muted)}
 @media(min-width:700px){.ctrl{position:sticky;top:0;z-index:5}}
-@media(max-width:600px){h1{font-size:27px}.name{font-size:19px}.note{font-size:22px}.card{padding:14px}}
+@media(max-width:600px){h1{font-size:27px}.name{font-size:19px}.note{font-size:22px}.card{padding:14px}.rab{width:46px;height:46px}.card{column-gap:10px}}
 </style></head><body><div class="wrap">
 
 <div class="hero">
@@ -95,13 +96,17 @@ La <b>note</b> mesure la solidité du dossier, sur cinq critères. Le <b>lapin</
 </div>
 
 <script>
-const MAJ='21/11/2026';
-const F={"crossject-tout-est-pret-sauf-le-depot": "crossject-alcj-19-11-2026", "ekinops-la-croissance-revient-la": "ekinops-eki-16-11-2026", "adocia-129-en-un-mois-avant-les-donnees": "adocia-adoc-13-11-2026", "memscap-la-marge-suit-enfin-la-croissance": "memscap-mems-13-11-2026", "riber-le-leader-de-lepitaxie-attend": "riber-alrib-11-11-2026", "roctool-deux-commandes-de-defense": "roctool-alroc-10-11-2026", "thx-pharma-la-phase-3-est-financee": "thx-pharma-althx-09-11-2026", "genfit-les-redevances-triplent-la": "genfit-gnft-07-11-2026", "soitec-la-photonique-decolle-le-cours": "soitec-soi-05-11-2026", "viridien-la-dette-fond-la-geoscience": "viridien-viri-04-11-2026", "biomerieux-le-t3-repart-la-fourchette": "biomerieux-bim-03-11-2026", "alstom-le-coradia-max-fait-derailler": "alstom-alo-02-11-2026", "2crsi-des-ventes-encaissees-des-comptes": "2crsi-al2si-02-11-2026", "median-technologies-licro-accelere": "median-technologies-almdt-29-10-2026", "dbv-technologies-le-dossier-est-a": "dbv-technologies-dbv-29-10-2026", "lumibird-un-t4-record-promis-un-cheque": "lumibird-lbird-26-10-2026", "atos-le-redressement-se-paie-a-credit": "atos-ato-21-10-2026", "sensorion-une-biotech-payee-au-prix": "sensorion-alsen-20-10-2026", "eutelsat-lalternative-europeenne": "eutelsat-etl-18-10-2026", "haffner-energy-financee-commandee": "haffner-energy-alhaf-17-10-2026", "vusion-a-quatre-jours-du-t3-le-gap": "vusion-vu-16-10-2026", "median-technologies-tout-est-autorise": "median-technologies-almdt-16-10-2026"};
+const MAJ='26/11/2026';
+const F={"ldc-un-semestre-au-dessus-de-lobjectif": "ldc-loup-26-11-2026", "vusion-le-plan-2030-est-pose-2027": "vusion-vu-25-11-2026", "trigano-le-benefice-remonte-le-marche": "trigano-tri-25-11-2026", "inventiva-tout-se-joue-sur-une-phase": "inventiva-iva-24-11-2026", "crossject-tout-est-pret-sauf-le-depot": "crossject-alcj-19-11-2026", "ekinops-la-croissance-revient-la": "ekinops-eki-16-11-2026", "adocia-129-en-un-mois-avant-les-donnees": "adocia-adoc-13-11-2026", "memscap-la-marge-suit-enfin-la-croissance": "memscap-mems-13-11-2026", "riber-le-leader-de-lepitaxie-attend": "riber-alrib-11-11-2026", "roctool-deux-commandes-de-defense": "roctool-alroc-10-11-2026", "thx-pharma-la-phase-3-est-financee": "thx-pharma-althx-09-11-2026", "genfit-les-redevances-triplent-la": "genfit-gnft-07-11-2026", "soitec-la-photonique-decolle-le-cours": "soitec-soi-05-11-2026", "viridien-la-dette-fond-la-geoscience": "viridien-viri-04-11-2026", "biomerieux-le-t3-repart-la-fourchette": "biomerieux-bim-03-11-2026", "alstom-le-coradia-max-fait-derailler": "alstom-alo-02-11-2026", "2crsi-des-ventes-encaissees-des-comptes": "2crsi-al2si-02-11-2026", "median-technologies-licro-accelere": "median-technologies-almdt-29-10-2026", "dbv-technologies-le-dossier-est-a": "dbv-technologies-dbv-29-10-2026", "lumibird-un-t4-record-promis-un-cheque": "lumibird-lbird-26-10-2026", "atos-le-redressement-se-paie-a-credit": "atos-ato-21-10-2026", "sensorion-une-biotech-payee-au-prix": "sensorion-alsen-20-10-2026", "eutelsat-lalternative-europeenne": "eutelsat-etl-18-10-2026", "haffner-energy-financee-commandee": "haffner-energy-alhaf-17-10-2026", "vusion-a-quatre-jours-du-t3-le-gap": "vusion-vu-16-10-2026", "median-technologies-tout-est-autorise": "median-technologies-almdt-16-10-2026"};
 
 const P='https://rabbittrader.substack.com/p/';
 const S={bio:'Biotech et santé',tech:'Tech, semi-conducteurs et télécoms',ind:'Industrie et énergie'};
 // date (AAAA-MM-JJ), nom, ticker, secteur, note, lapin (h/n/b/x), titre, slug, liens supplémentaires
 const A=[
+['2026-11-26','LDC','LOUP','ind',6.4,'n','Un semestre au-dessus de l\'objectif, un second semestre sous pression','ldc-un-semestre-au-dessus-de-lobjectif'],
+['2026-11-25','Vusion','VU','tech',6.4,'n','Le plan 2030 est posé, 2027 sera une année de transition','vusion-le-plan-2030-est-pose-2027'],
+['2026-11-25','Trigano','TRI','ind',5.8,'n','Le bénéfice remonte, le marché hésite','trigano-le-benefice-remonte-le-marche'],
+['2026-11-24','Inventiva','IVA','bio',4.3,'n','Tout se joue sur une phase 3','inventiva-tout-se-joue-sur-une-phase'],
 ['2026-11-19','Crossject','ALCJ','bio',3.6,'n','Tout est prêt, sauf le dépôt','crossject-tout-est-pret-sauf-le-depot'],
 ['2026-11-16','Ekinops','EKI','tech',5.6,'n','La croissance revient, la marge attend le plan Bridge','ekinops-la-croissance-revient-la'],
 ['2026-11-13','Adocia','ADOC','bio',4.7,'n','+129 % en un mois avant les données','adocia-129-en-un-mois-avant-les-donnees'],
@@ -134,6 +139,7 @@ function card(a){
  const links=`<div class="links"><a class="lk" href="${a.u}">Lire sur Substack</a>${a.f?`<a class="lk2" href="${a.f}">Analyse complète</a>`:''}</div>`;
  return `<div class="card" onclick="if(!event.target.closest('a'))location.href='${a.u}'"><div><div class="name">${a.nom}<small>${a.tk}</small></div>
  <div class="meta"><span class="date">${fr(a.d)}</span><span class="sect">${S[a.s]}</span></div></div>
+ ${a.lap!=='x'?`<img class="rab ${a.lap}" src="https://rabbittrader.fr/lapin-${a.lap}.webp" alt="Lapin ${LAP[a.lap].toLowerCase()}" width="84" height="84" loading="lazy">`:''}
  <div class="right"><div class="note">${nf(a.note)}<small>/10</small></div><div class="bar"><i style="width:${a.note*10}%"></i></div><span class="lap ${a.lap}">${LAP[a.lap]}</span></div>
  <div class="title">${a.t}</div>${ex}${links}</div>`}
 function render(){
